@@ -1,48 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Top Scorers</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 </head>
 <body ng-app="topScorers">
+	<div class="container">
+		<header>
+			<img src="images/logo.png" alt="logo" class="logo">
+			<p class="title">Top strzelcy Serie A</p>
+			<p class="description">sezon 2016/2016</p>
+			<div class="clearfix"></div>
+		</header>
+		<div ng-controller="nameCtrl">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>POZYCJA</th>
+						<th>ZAWODNIK</th>
+						<th>GOLE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="topscorer in topscorers | limitTo:10 track by $index">
+						<td>{{ $index + 1 }}</td>
+						<td>{{ topscorer.fullname }}</td>
+						<td>{{ topscorer.goals }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>	
+	</div>
+	<footer>
+		<p>powered by PGS</p>
+	</footer>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/angular.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
-
-
-	<div ng-controller="nameCtrl">
-		<table>
-			<thead>
-				<tr>
-					<th>Pozycja</th>
-					<th>Zawodnik</th>
-					<th>Gole</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="topscorer in topscorers | limitTo:10 track by $index">
-					<td>{{ $index + 1 }}</td>
-					<td>{{ topscorer.fullname }}</td>
-					<td>{{ topscorer.goals }}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<script type="">
-
-		var topScorers = angular.module("topScorers",[]);
-		topScorers.controller("nameCtrl", function($scope,$http){
-			var req = {     
-				  headers: {          
-				   'X-Mashape-Key': '' 
-				  },
-				   url: ''
-			};
-
-			$http(req).then(function successCallback(response) {
-				console.log(response.data.data.topscorers);
-			    $scope.topscorers = response.data.data.topscorers;
-			});
-		});
-	</script>
 </body>
 </html>
