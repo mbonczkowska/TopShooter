@@ -94,9 +94,10 @@ body{
 	padding-left: 40px;
 	padding-top: 15px;
 	padding-bottom: 15px;
-	border: 5px solid #d3d3d3;
-	border-top: none;
-	border-bottom: none; 
+	background-image: linear-gradient(to right, #d3d3d3 3px, rgba(255,255,255,0) 1px), linear-gradient(to left,#d3d3d3 3px, rgba(255,255,255,0) 1px);
+	background-position: center;
+	background-size: 100% 80%;
+	background-repeat: no-repeat;
 	
 }
 
